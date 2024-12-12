@@ -1,42 +1,3 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
-// public class PlayerController : MonoBehaviour
-// {
-//     [SerializeField] private Rigidbody _rigidbody;         // Reference to the Rigidbody
-//     [SerializeField] private FixedJoystick _leftJoystick; // Joystick for movement
-//     [SerializeField] private FixedJoystick _rightJoystick; // Joystick for rotation
-//     [SerializeField] private Animator _animator;          // Animator for player animations (optional)
-//     [SerializeField] private float _moveSpeed;       // Movement speed
-//     [SerializeField] private float _rotationSpeed; // Rotation speed
-
-//     private void FixedUpdate()
-//     {
-//         // Movement logic using the first joystick
-//         Vector3 movement = new Vector3(_leftJoystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _leftJoystick.Vertical * _moveSpeed);
-//         _rigidbody.velocity = movement;
-
-//         // Rotation logic using the second joystick
-//         float horizontalRotation = _rightJoystick.Horizontal;
-//         float verticalRotation = _rightJoystick.Vertical;
-
-//         if (horizontalRotation != 0 || verticalRotation != 0)
-//         {
-//             // Calculate the direction to face
-//             Vector3 direction = new Vector3(horizontalRotation, 0, verticalRotation).normalized;
-
-//             // Calculate the target rotation
-//             Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-//             // Smoothly rotate towards the target direction
-//             _rigidbody.rotation = Quaternion.Slerp(_rigidbody.rotation, targetRotation, _rotationSpeed * Time.fixedDeltaTime);
-//         }
-//     }
-// }
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,12 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rigidbody;         // Reference to the Rigidbody
-    [SerializeField] private FixedJoystick _leftJoystick; // Joystick for movement
-    [SerializeField] private FixedJoystick _rightJoystick; // Joystick for rotation
-    [SerializeField] private Animator _animator;          // Animator for player animations (optional)
-    [SerializeField] private float _moveSpeed = 5f;       // Movement speed
-    [SerializeField] private float _rotationSpeed = 100f; // Rotation speed
+    [SerializeField] private Rigidbody _rigidbody;         
+    [SerializeField] private FixedJoystick _leftJoystick; 
+    [SerializeField] private FixedJoystick _rightJoystick;
+    [SerializeField] private Animator _animator;          
+    [SerializeField] private float _moveSpeed;       
+    [SerializeField] private float _rotationSpeed; 
 
     private void FixedUpdate()
     {
@@ -71,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
         _rigidbody.velocity = movement;
 
-        // Rotation logic using the second joystick
+        // Rotation logic using the right joystick
         float horizontalRotation = _rightJoystick.Horizontal;
         float verticalRotation = _rightJoystick.Vertical;
 
