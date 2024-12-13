@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     // Define spawn range
     public float spawnRangeX = 10f; // Range for X-axis
     public float spawnRangeZ = 10f; // Range for Z-axis
-    public float spawnY = 0f;       // Fixed Y-axis position (ground level)
+    public float spawnY = 5f;       // Fixed Y-axis position (ground level)
 
     public int maxZombies = 10;       // Maximum number of zombies allowed
     private int currentZombieCount = 0; // Current number of zombies
@@ -16,10 +17,21 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        // Spawn initial zombies to reach the max count
-        for (int i = 0; i < maxZombies; i++)
+        StartCoroutine(SpawnZombiesWithDelay());
+    }
+
+    IEnumerator SpawnZombiesWithDelay()
+    {
+        while (currentZombieCount < maxZombies)
         {
-            SpawnZombie();
+            // Spawn 2 zombies in each iteration
+            for (int i = 0; i < 2 && currentZombieCount < maxZombies; i++)
+            {
+                SpawnZombie();
+            }
+
+            // Wait for 0.5 seconds before the next iteration
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -32,8 +44,11 @@ public class SpawnManager : MonoBehaviour
             float randomZ = Random.Range(-spawnRangeZ, spawnRangeZ);
             Vector3 spawnPosition = new Vector3(randomX, spawnY, randomZ);
 
-            // Spawn the zombie and add it to the active list
-            GameObject zombie = ObjectPooler.Instance.SpawnFromPool(zombieTag, spawnPosition, Quaternion.identity);
+            // Define a rotation of 180 degrees on the Y-axis
+            Quaternion spawnRotation = Quaternion.Euler(0, 180, 0);
+
+            // Spawn the zombie with the specified rotation and add it to the active list
+            GameObject zombie = ObjectPooler.Instance.SpawnFromPool(zombieTag, spawnPosition, spawnRotation);
             activeZombies.Add(zombie);
             currentZombieCount++;
         }
@@ -48,7 +63,10 @@ public class SpawnManager : MonoBehaviour
             currentZombieCount--;
         }
 
-        // Spawn a new zombie to maintain the count
-        SpawnZombie();
+        // Ensure zombies are maintained by restarting the coroutine
+        if (currentZombieCount < maxZombies)
+        {
+            StartCoroutine(SpawnZombiesWithDelay());
+        }
     }
 }

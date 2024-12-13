@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rigidbody;         
-    [SerializeField] private FixedJoystick _leftJoystick; 
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private FixedJoystick _leftJoystick;
     [SerializeField] private FixedJoystick _rightJoystick;
-    [SerializeField] private Animator _animator;          
-    [SerializeField] private float _moveSpeed;       
-    [SerializeField] private float _rotationSpeed; 
+    [SerializeField] private Animator _animator;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _rotationSpeed;
+
 
     private void FixedUpdate()
     {
