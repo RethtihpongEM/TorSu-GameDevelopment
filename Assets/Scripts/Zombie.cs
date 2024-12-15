@@ -8,7 +8,7 @@ public class Zombie : MonoBehaviour
   private Transform player;
   private Animator animator;
   [SerializeField] float damage = 2f;
-  [SerializeField] float attackDistance = 1.5f;
+  [SerializeField] float attackDistance = 2f;
 
   private IObjectPool<Zombie> zombiePool;
 
@@ -52,18 +52,27 @@ public class Zombie : MonoBehaviour
       animator.SetBool("IsAttacking", false);
       animator.SetBool("IsWalking", true);
     }
+
   }
 
-
-
-  private void OnTriggerEnter(Collider other)
-  {
-    if (other.CompareTag("Player"))
+  public void DealDamage() // Called by the animation event
     {
-      Player player = other.GetComponent<Player>();
-      player.TakeDamage(damage);
-      Debug.Log("Touch Player");
-      // zombiePool.Release(this);
+        if (player != null)
+        {
+            Player playerComponent = player.GetComponent<Player>();
+            if (playerComponent != null)
+            {
+                playerComponent.TakeDamage(damage);
+                Debug.Log("Player damaged!");
+            }
+        }
     }
-  }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Zombie reached the player!");
+        }
+    }
 }
