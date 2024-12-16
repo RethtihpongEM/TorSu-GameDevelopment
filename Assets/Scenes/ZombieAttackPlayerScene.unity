@@ -716,7 +716,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: c3cc29ba938959546914f260209df046, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6e0a9fcdb1f3e479282898fb4fc6495c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &1164539003
 PrefabInstance:
@@ -911,7 +911,8 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4872675721866607210, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -938,7 +939,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1209535787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d808217a09920145abf79a06c3919e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e51b8407cbd04f77bce92833e8d66f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1343400789
@@ -1199,7 +1200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2054238304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52df8ceb78278d547b23ed3ed87b2ca5, type: 3}
+  m_Script: {fileID: 11500000, guid: c2f1273b3a3924f188b56a4c94582c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
