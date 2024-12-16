@@ -9,9 +9,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FixedJoystick _leftJoystick;
     [SerializeField] private FixedJoystick _rightJoystick;
     [SerializeField] private Animator _animator;
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private GameObject _bulletPrefab; // Reference to your bullet prefab
+    [SerializeField] private Transform _shootPoint; // Position where bullets spawn
+    [SerializeField] private float _moveSpeed = 6f;
+    [SerializeField] private float _rotationSpeed = 9f;
+    [SerializeField] private float _bulletSpeed = 10f;
+    [SerializeField] private float _fireRate = 0.1f; // Time between shots
 
+    private float _nextFireTime;
 
     private void FixedUpdate()
     {
@@ -45,13 +50,13 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsRunningBack", isMovingBackward);
         _animator.SetBool("IsIdle", isIdle);
 
-        // Rotation logic using the right joystick
+        // Rotation and shooting logic using the right joystick
         float horizontalRotation = _rightJoystick.Horizontal;
         float verticalRotation = _rightJoystick.Vertical;
 
         if (horizontalRotation != 0 || verticalRotation != 0)
         {
-            // Calculate direction to face
+            // Calculate direction to face or shoot
             Vector3 direction = new Vector3(horizontalRotation, 0, verticalRotation).normalized;
 
             // Calculate target rotation
@@ -59,6 +64,26 @@ public class PlayerController : MonoBehaviour
 
             // Smooth rotation
             _rigidbody.rotation = Quaternion.Slerp(_rigidbody.rotation, targetRotation, _rotationSpeed * Time.fixedDeltaTime);
+
+            // Shooting logic
+            if (Time.time >= _nextFireTime)
+            {
+                Shoot(direction);
+                _nextFireTime = Time.time + _fireRate;
+            }
         }
+    }
+
+    private void Shoot(Vector3 direction)
+    {
+        // Instantiate bullet at the shoot point
+        GameObject bullet = Instantiate(_bulletPrefab, _shootPoint.position, Quaternion.identity);
+
+        // Add force to the bullet in the given direction
+        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+        bulletRigidbody.velocity = direction * _bulletSpeed;
+
+        // Optionally, destroy the bullet after a certain time
+        Destroy(bullet, 5f);
     }
 }
