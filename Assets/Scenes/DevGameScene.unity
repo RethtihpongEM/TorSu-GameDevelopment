@@ -887,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_Name
-      value: Left Joystick
+      value: LeftJoystick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -933,7 +933,7 @@ PrefabInstance:
     - target: {fileID: 7200729244598579243, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
       propertyPath: _bulletPrefab
       value: 
-      objectReference: {fileID: 6064165707015250133, guid: 3c5636a3557014933819b587f5ce574f, type: 3}
+      objectReference: {fileID: 6064165707015250133, guid: ccc846775fa5243a2af3bbb0cd0c9482, type: 3}
     - target: {fileID: 7200729244598579243, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
       propertyPath: _leftJoystick
       value: 
@@ -1126,7 +1126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_Name
-      value: Right Joystick
+      value: RightJoystick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
