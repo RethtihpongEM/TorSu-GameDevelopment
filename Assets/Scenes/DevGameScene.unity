@@ -185,54 +185,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 82d47829fb0794adb8f26ef6df528edf, type: 2}
   m_BuildHeightMesh: 0
---- !u!1 &49119514
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 49119516}
-  - component: {fileID: 49119515}
-  m_Layer: 0
-  m_Name: ZombiePooler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &49119515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49119514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41966a74f9f43473e8a74d2bc0f180aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pools:
-  - tag: Zombie
-    prefab: {fileID: 2803820806472684270, guid: fcc7e72ef9922724c9dbe91fe1141293, type: 3}
-    size: 10
---- !u!4 &49119516
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49119514}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &343604673
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,9 +640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4b827158fb54cdfbb918fa3553c36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 728962446}
+  - {fileID: 501186511}
+  - {fileID: 1991884697}
   timeBetweenSpwawns: 5
-  zombiePrefab: {fileID: 0}
+  zombiePrefab: {fileID: 8675059001282640114, guid: fcc7e72ef9922724c9dbe91fe1141293, type: 3}
 --- !u!1 &1040597209
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +886,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1983828074}
     - target: {fileID: 7200729244598579243, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
+      propertyPath: _bulletSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200729244598579243, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
       propertyPath: _bulletPrefab
       value: 
       objectReference: {fileID: 6064165707015250133, guid: ccc846775fa5243a2af3bbb0cd0c9482, type: 3}
@@ -997,33 +956,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8827236878092177469, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1983828074}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8199776741730404999, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1209535793}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
---- !u!1 &1209535787 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8199776741730404999, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
-  m_PrefabInstance: {fileID: 1209535786}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1209535792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8827236878092177469, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
   m_PrefabInstance: {fileID: 1209535786}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1209535793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209535787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80b774e8dd914481ea9c6f273c8e89ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1343400789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1149,55 +1088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1700934365
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1700934367}
-  - component: {fileID: 1700934366}
-  m_Layer: 0
-  m_Name: ZombieSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1700934366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700934365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11215c3bc9b94b02a0540bac64844f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zombieTag: Zombie
-  spawnRangeX: 4
-  spawnRangeZ: 4
-  spawnY: 0
-  maxZombies: 10
---- !u!4 &1700934367
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700934365}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983828073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1407,5 @@ SceneRoots:
   - {fileID: 1040597211}
   - {fileID: 2064323825}
   - {fileID: 343604677}
-  - {fileID: 1700934367}
-  - {fileID: 49119516}
   - {fileID: 1209535786}
   - {fileID: 983390846}
