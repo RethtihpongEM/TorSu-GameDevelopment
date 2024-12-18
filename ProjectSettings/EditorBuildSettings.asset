@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameUI/DemoScene_CasualFantasy.unity
+    path: Assets/Scenes/MainScene.unity
     guid: eac1f168649834e2cb5713e988898e07
   - enabled: 1
-    path: Assets/Scenes/GameUI/Game Mode.unity
+    path: Assets/Scenes/GameModeScene.unity
     guid: a88b4e1d5ac9e4445a6f3a9f658036c2
   - enabled: 1
-    path: Assets/Scenes/GameUI/Map Selection.unity
+    path: Assets/Scenes/MapSelectionScene.unity
     guid: 5c8de5044e0ba460685bce19a730471b
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: ec7e770de035e4d53b8fa2fed19d2cde
   m_configObjects: {}

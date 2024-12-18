@@ -7,7 +7,7 @@ public class Zombie : MonoBehaviour
   private NavMeshAgent agent;
   private Transform player;
   private Animator animator;
-  [SerializeField] float damage = 2f;
+  [SerializeField] int damage = 25;
   [SerializeField] float attackDistance = 2f;
 
   private IObjectPool<Zombie> zombiePool;

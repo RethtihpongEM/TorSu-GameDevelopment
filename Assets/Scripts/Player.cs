@@ -4,22 +4,43 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour
 {
   private NavMeshAgent agent;
-  private float health = 10f;
+
+  public int maxHealth = 100;
+  public int currentHealth;
 
   void Start()
   {
+    currentHealth = maxHealth;
+    NotifyHealthChange();
     agent = GetComponent<NavMeshAgent>();
   }
 
   void Update()
   {
-    
+
   }
 
-  public void TakeDamage(float damage)
+  private void NotifyHealthChange()
   {
-    health -= damage;
-    Debug.Log("Player's health: ");
-    Debug.Log(health);
+    GameManager.Instance.UpdateHealthUI(currentHealth, maxHealth); // Notify GameManager of health changes
   }
+
+  public void TakeDamage(int damage)
+  {
+    currentHealth -= damage;
+    NotifyHealthChange();
+    Debug.Log("Player's health: ");
+    Debug.Log(currentHealth);
+    if (currentHealth <= 0)
+    {
+      Die();
+    }
+  }
+
+  private void Die()
+  {
+    Debug.Log("Player has died!");
+  }
+
+
 }
