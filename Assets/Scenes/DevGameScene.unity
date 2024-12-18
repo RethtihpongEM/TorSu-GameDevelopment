@@ -740,6 +740,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1116163151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8199776741730404999, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
+  m_PrefabInstance: {fileID: 1209535786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1164539003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -886,6 +891,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1983828074}
     - target: {fileID: 7200729244598579243, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
+      propertyPath: _ammoManager
+      value: 
+      objectReference: {fileID: 1209535798}
+    - target: {fileID: 7200729244598579243, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
       propertyPath: _bulletSpeed
       value: 50
       objectReference: {fileID: 0}
@@ -956,13 +965,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8827236878092177469, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1983828074}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8199776741730404999, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1209535798}
   m_SourcePrefab: {fileID: 100100000, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
 --- !u!4 &1209535792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8827236878092177469, guid: e9a87f86b6dfc43cab9405b381604412, type: 3}
   m_PrefabInstance: {fileID: 1209535786}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1209535798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116163151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1d7ee9e277d4031af345ff0750dc30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 30
+  _reloadTime: 2
 --- !u!1001 &1343400789
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,11 +14,38 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed = 6f;
     [SerializeField] private float _rotationSpeed = 9f;
     [SerializeField] private float _bulletSpeed = 10f;
-    [SerializeField] private float _fireRate = 0.1f; // Time between shots
+    [SerializeField] private float _fireRate = 0.5f; // Time between shots
+    [SerializeField] private AmmoManager _ammoManager;
 
     private float _nextFireTime;
 
     private void FixedUpdate()
+    {
+        // Handle movement regardless of whether reloading or not
+        HandleMovement();
+
+        // Rotation logic
+        float horizontalRotation = _rightJoystick.Horizontal;
+        float verticalRotation = _rightJoystick.Vertical;
+
+        // Implement a small deadzone for the joystick to avoid firing when joystick is at rest
+        if (Mathf.Abs(horizontalRotation) > 0.1f || Mathf.Abs(verticalRotation) > 0.1f)
+        {
+            // Rotation logic when the right joystick is used
+            Vector3 direction = new Vector3(horizontalRotation, 0, verticalRotation).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            _rigidbody.rotation = Quaternion.Slerp(_rigidbody.rotation, targetRotation, _rotationSpeed * Time.fixedDeltaTime);
+
+            // Shooting logic only when not reloading
+            if (!_ammoManager.IsReloading && Time.time >= _nextFireTime && _ammoManager.TryShoot())
+            {
+                Shoot(direction);  // Shoot in the direction of the joystick input
+                _nextFireTime = Time.time + _fireRate;
+            }
+        }
+    }
+
+    private void HandleMovement()
     {
         // Movement logic
         Vector3 movement = Vector3.zero;
@@ -26,12 +53,10 @@ public class PlayerController : MonoBehaviour
         // Check for joystick or WASD input
         if (_leftJoystick.Horizontal != 0 || _leftJoystick.Vertical != 0)
         {
-            // Joystick movement
             movement = new Vector3(_leftJoystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _leftJoystick.Vertical * _moveSpeed);
         }
         else
         {
-            // WASD movement
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             movement = new Vector3(horizontal * _moveSpeed, _rigidbody.velocity.y, vertical * _moveSpeed);
@@ -40,38 +65,14 @@ public class PlayerController : MonoBehaviour
         // Apply movement to Rigidbody
         _rigidbody.velocity = movement;
 
-        // Determine Animator states
+        // Set Animator parameters
         bool isMovingForward = movement.z > 0.1f;
         bool isMovingBackward = movement.z < -0.1f;
         bool isIdle = movement == Vector3.zero;
 
-        // Set Animator parameters
         _animator.SetBool("IsRunningFront", isMovingForward);
         _animator.SetBool("IsRunningBack", isMovingBackward);
         _animator.SetBool("IsIdle", isIdle);
-
-        // Rotation and shooting logic using the right joystick
-        float horizontalRotation = _rightJoystick.Horizontal;
-        float verticalRotation = _rightJoystick.Vertical;
-
-        if (horizontalRotation != 0 || verticalRotation != 0)
-        {
-            // Calculate direction to face or shoot
-            Vector3 direction = new Vector3(horizontalRotation, 0, verticalRotation).normalized;
-
-            // Calculate target rotation
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-            // Smooth rotation
-            _rigidbody.rotation = Quaternion.Slerp(_rigidbody.rotation, targetRotation, _rotationSpeed * Time.fixedDeltaTime);
-
-            // Shooting logic
-            if (Time.time >= _nextFireTime)
-            {
-                Shoot(direction);
-                _nextFireTime = Time.time + _fireRate;
-            }
-        }
     }
 
     private void Shoot(Vector3 direction)
