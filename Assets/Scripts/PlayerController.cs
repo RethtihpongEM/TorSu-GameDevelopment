@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot(Vector3 direction)
     {
         // Instantiate bullet at the shoot point
-        GameObject bullet = Instantiate(_bulletPrefab, _shootPoint.position, Quaternion.identity);
+        GameObject bullet = Instantiate(_bulletPrefab, _shootPoint.position, _bulletPrefab.transform.rotation);
 
         // Add force to the bullet in the given direction
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
