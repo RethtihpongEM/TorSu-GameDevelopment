@@ -574,7 +574,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 532416766}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
         m_MethodName: LoadSceneByIndex
         m_Mode: 3
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 532416761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460862f4e04f5469f824d0c3afd8f288, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d9135961cfe1474a8f42a8dc01926df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &704702092
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 532416766}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
         m_MethodName: LoadSceneByIndex
         m_Mode: 3

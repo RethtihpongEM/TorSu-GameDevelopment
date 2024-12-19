@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
         // Instantiate bullet at the shoot point
         GameObject bullet = Instantiate(_bulletPrefab, _shootPoint.position, _bulletPrefab.transform.rotation);
+        bullet.transform.rotation = Quaternion.LookRotation(_shootPoint.forward);
+
 
         // Add force to the bullet in the given direction
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
