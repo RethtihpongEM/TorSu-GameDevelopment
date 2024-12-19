@@ -2235,7 +2235,7 @@ GameObject:
   - component: {fileID: 2607665658194938898}
   - component: {fileID: 3189270068230413110}
   - component: {fileID: 7200729244598579243}
-  - component: {fileID: 5142118852695782909}
+  - component: {fileID: 7492757374646799739}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2328,7 +2328,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &7200729244598579243
@@ -2353,7 +2353,8 @@ MonoBehaviour:
   _rotationSpeed: 9
   _bulletSpeed: 10
   _fireRate: 0.1
---- !u!114 &5142118852695782909
+  _ammoManager: {fileID: 0}
+--- !u!114 &7492757374646799739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2362,12 +2363,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8199776741730404999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37d705c8e9115e439ec799186182634, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e51b8407cbd04f77bce92833e8d66f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  variableJoystick: {fileID: 0}
-  rb: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1 &8253417771930179640
 GameObject:
   m_ObjectHideFlags: 0

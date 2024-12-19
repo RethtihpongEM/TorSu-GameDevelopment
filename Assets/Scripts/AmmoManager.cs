@@ -10,6 +10,7 @@ public class AmmoManager : MonoBehaviour
     private bool _isReloading = false;
 
     public int CurrentAmmo => _currentAmmo;
+    public int MaxAmmo => _maxAmmo;
     public bool IsReloading => _isReloading;
 
     public delegate void AmmoEvent();
@@ -20,6 +21,7 @@ public class AmmoManager : MonoBehaviour
     private void Start()
     {
         _currentAmmo = _maxAmmo;
+        GameManager.Instance.UpdateAmmoUI(_currentAmmo, _maxAmmo);
         OnAmmoChanged?.Invoke();
     }
 

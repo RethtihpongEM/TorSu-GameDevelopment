@@ -16,7 +16,6 @@ public class Zombie : MonoBehaviour
 
   private int health = 10;
   private int hitCount = 0;  // Track how many times the zombie has been hit
-  public static int killedZombieCount = 0; // Static counter for the number of killed zombies
 
   public void SetPool(IObjectPool<Zombie> pool)
   {
@@ -61,7 +60,7 @@ public class Zombie : MonoBehaviour
 
   }
 
-  public void DealDamage() // Called by the animation event
+  public void DealDamage() //  Called by the animation event
   {
     if (player != null)
     {
@@ -101,14 +100,10 @@ public class Zombie : MonoBehaviour
     // Check if the zombie is dead (health <= 0)
     if (health <= 0)
     {
-      // Increment the killed zombie counter
-      killedZombieCount++;
-
-      // Log the death of the zombie
-      Debug.Log($"Zombie ID: {ID} has been killed!, Total zombies killed: {killedZombieCount}");
-
       // Destroy the zombie game object
       Destroy(gameObject);
+      GameManager.Instance.IncrementZombieKillCount();
+
     }
   }
 }

@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
             // Get the Zombie component
             Zombie zombie = other.GetComponent<Zombie>();
 
+
             if (zombie != null)
             {
                 // Log the hit with a unique ID or name of the zombie

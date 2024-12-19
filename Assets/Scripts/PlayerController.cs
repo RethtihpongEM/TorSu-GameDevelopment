@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
             // Shooting logic only when not reloading
             if (!_ammoManager.IsReloading && Time.time >= _nextFireTime && _ammoManager.TryShoot())
             {
+
+                GameManager.Instance.UpdateAmmoUI(_ammoManager.CurrentAmmo, _ammoManager.MaxAmmo);
                 Shoot(direction);  // Shoot in the direction of the joystick input
                 _nextFireTime = Time.time + _fireRate;
             }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public float timeRemaining = 180f; // Default 3 minutes
     public TextMeshProUGUI timerText; // Reference to TextMeshProUGUI
     public TextMeshProUGUI zombieKillText;
+    public TextMeshProUGUI ammoCounterText;
     public Slider healthSlider;
     // public TextMeshProUGUI scoreText; // Updated for score display as well
     // public GameObject gameOverPanel;
@@ -42,6 +43,11 @@ public class GameManager : MonoBehaviour
             healthSlider.maxValue = maxHealth; // Set max value of slider
             healthSlider.value = currentHealth; // Update the slider value
         }
+    }
+
+    public void UpdateAmmoUI(int currentAmmo, int maxAmmo)
+    {
+        ammoCounterText.text = currentAmmo + "/" + maxAmmo; // Update the zombie kill counter
     }
 
     void Update()
