@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _bulletSpeed = 10f;
     [SerializeField] private float _fireRate = 0.5f; // Time between shots
     [SerializeField] private AmmoManager _ammoManager;
+    [SerializeField] private AudioSource _audioSource; // Reference to the AudioSource
+    [SerializeField] private AudioClip _shootSound;    // Shooting sound effect
+
 
     private float _nextFireTime;
 
@@ -79,6 +82,12 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot(Vector3 direction)
     {
+        // Play shooting sound each function called
+        if (_audioSource != null && _shootSound != null)
+        {
+            _audioSource.PlayOneShot(_shootSound);
+        }
+
         // Instantiate bullet at the shoot point
         GameObject bullet = Instantiate(_bulletPrefab, _shootPoint.position, _bulletPrefab.transform.rotation);
 
@@ -90,3 +99,4 @@ public class PlayerController : MonoBehaviour
         Destroy(bullet, 5f);
     }
 }
+
