@@ -2235,7 +2235,8 @@ GameObject:
   - component: {fileID: 2607665658194938898}
   - component: {fileID: 3189270068230413110}
   - component: {fileID: 7200729244598579243}
-  - component: {fileID: -4872675721866607210}
+  - component: {fileID: 1882463902654985498}
+  - component: {fileID: 3448973660151128193}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2328,7 +2329,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &7200729244598579243
@@ -2347,9 +2348,16 @@ MonoBehaviour:
   _leftJoystick: {fileID: 0}
   _rightJoystick: {fileID: 0}
   _animator: {fileID: 9010045140540793286}
+  _bulletPrefab: {fileID: 0}
+  _shootPoint: {fileID: 0}
   _moveSpeed: 6
   _rotationSpeed: 9
---- !u!114 &-4872675721866607210
+  _bulletSpeed: 10
+  _fireRate: 0.1
+  _ammoManager: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _shootSound: {fileID: 0}
+--- !u!114 &1882463902654985498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2358,9 +2366,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8199776741730404999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e51b8407cbd04f77bce92833e8d66f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 80b774e8dd914481ea9c6f273c8e89ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+--- !u!114 &3448973660151128193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199776741730404999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1d7ee9e277d4031af345ff0750dc30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 30
+  _reloadTime: 2
 --- !u!1 &8253417771930179640
 GameObject:
   m_ObjectHideFlags: 0

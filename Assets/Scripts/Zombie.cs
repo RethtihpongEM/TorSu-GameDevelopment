@@ -7,10 +7,15 @@ public class Zombie : MonoBehaviour
   private NavMeshAgent agent;
   private Transform player;
   private Animator animator;
-  [SerializeField] float damage = 2f;
+  [SerializeField] int damage = 25;
   [SerializeField] float attackDistance = 2f;
 
   private IObjectPool<Zombie> zombiePool;
+  public int ID { get; private set; }
+  private static int nextID = 1;
+
+  private int health = 10;
+  private int hitCount = 0;  // Track how many times the zombie has been hit
 
   public void SetPool(IObjectPool<Zombie> pool)
   {
@@ -55,24 +60,50 @@ public class Zombie : MonoBehaviour
 
   }
 
-  public void DealDamage() // Called by the animation event
+  public void DealDamage() //  Called by the animation event
+  {
+    if (player != null)
     {
-        if (player != null)
-        {
-            Player playerComponent = player.GetComponent<Player>();
-            if (playerComponent != null)
-            {
-                playerComponent.TakeDamage(damage);
-                Debug.Log("Player damaged!");
-            }
-        }
+      Player playerComponent = player.GetComponent<Player>();
+      if (playerComponent != null)
+      {
+        playerComponent.TakeDamage(damage);
+        Debug.Log("Player damaged!");
+      }
     }
+  }
 
-    private void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.CompareTag("Player"))
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Zombie reached the player!");
-        }
+      Debug.Log("Zombie reached the player!");
     }
+  }
+
+  private void Awake()
+  {
+    // Assign a unique ID to each zombie
+    ID = nextID;
+    nextID++;
+  }
+
+  public void TakeDamage(int damage)
+  {
+    // Decrease health by the damage value
+    health -= damage;
+    hitCount++;  // Increment the hit counter
+
+    // Log the damage and the total number of hits
+    Debug.Log($"Zombie ID: {ID} took {damage} damage. Remaining health: {health}. Total hits: {hitCount}");
+
+    // Check if the zombie is dead (health <= 0)
+    if (health <= 0)
+    {
+      // Destroy the zombie game object
+      Destroy(gameObject);
+      GameManager.Instance.IncrementZombieKillCount();
+
+    }
+  }
 }
