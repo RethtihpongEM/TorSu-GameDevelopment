@@ -4,10 +4,12 @@ using UnityEngine.Pool;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private float timeBetweenSpwawns =5f;
-    private float timeSinceLastSpawn; 
-    [SerializeField] private Zombie zombiePrefab;
+    [SerializeField] private float timeBetweenSpawns = 5f; // General spawn interval
+    [SerializeField] private float timeForSpecialZombie = 10f; // Interval for 4th prefab zombie
+    private float timeSinceLastSpawn;
+    private float timeSinceLastSpecialSpawn;
 
+    [SerializeField] private Zombie[] zombiePrefabs; // Array of zombie prefabs
     private IObjectPool<Zombie> zombiePool;
 
     void Awake()
@@ -18,8 +20,8 @@ public class Spawner : MonoBehaviour
     private void OnGet(Zombie zombie)
     {
         zombie.gameObject.SetActive(true);
-        Transform randomSpawnPoints = spawnPoints[Random.Range(0,spawnPoints.Length)];
-        zombie.transform.position= randomSpawnPoints.position;
+        Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        zombie.transform.position = randomSpawnPoint.position;
     }
 
     private void OnRelease(Zombie zombie)
@@ -29,23 +31,43 @@ public class Spawner : MonoBehaviour
 
     private Zombie CreateZombie()
     {
-        Zombie zombie = Instantiate(zombiePrefab);
+        // Randomly select a zombie prefab from the array for normal spawns
+        Zombie selectedPrefab = zombiePrefabs[Random.Range(0, zombiePrefabs.Length - 1)];
+        Zombie zombie = Instantiate(selectedPrefab);
         zombie.SetPool(zombiePool);
         return zombie;
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private Zombie CreateSpecialZombie()
     {
-        
+        // Select the 4th prefab explicitly
+        Zombie specialZombiePrefab = zombiePrefabs[^1];
+        Zombie zombie = Instantiate(specialZombiePrefab);
+        zombie.SetPool(zombiePool);
+        return zombie;
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        timeSinceLastSpawn = Time.time;
+        timeSinceLastSpecialSpawn = Time.time;
+    }
+
     void Update()
     {
-        if(Time.time > timeSinceLastSpawn)
+        // Spawn regular zombies at the default interval
+        if (Time.time > timeSinceLastSpawn)
         {
             zombiePool.Get();
-            timeSinceLastSpawn = Time.time + timeBetweenSpwawns;
+            timeSinceLastSpawn = Time.time + timeBetweenSpawns;
+        }
+
+        // Spawn the 4th prefab zombie at its specific interval
+        if (Time.time > timeSinceLastSpecialSpawn)
+        {
+            Zombie specialZombie = CreateSpecialZombie();
+            OnGet(specialZombie);
+            timeSinceLastSpecialSpawn = Time.time + timeForSpecialZombie;
         }
     }
 }

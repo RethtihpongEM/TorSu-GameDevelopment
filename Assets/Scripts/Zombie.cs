@@ -10,11 +10,13 @@ public class Zombie : MonoBehaviour
   [SerializeField] int damage = 25;
   [SerializeField] float attackDistance = 2f;
 
+  [SerializeField] private GameObject coinPrefab;
+
   private IObjectPool<Zombie> zombiePool;
   public int ID { get; private set; }
   private static int nextID = 1;
 
-  private int health = 10;
+  [SerializeField] int health = 10;
   private int hitCount = 0;  // Track how many times the zombie has been hit
 
   public void SetPool(IObjectPool<Zombie> pool)
@@ -73,14 +75,6 @@ public class Zombie : MonoBehaviour
     }
   }
 
-  private void OnTriggerEnter(Collider other)
-  {
-    if (other.CompareTag("Player"))
-    {
-      Debug.Log("Zombie reached the player!");
-    }
-  }
-
   private void Awake()
   {
     // Assign a unique ID to each zombie
@@ -102,8 +96,29 @@ public class Zombie : MonoBehaviour
     {
       // Destroy the zombie game object
       Destroy(gameObject);
+      SpawnCoin();
       GameManager.Instance.IncrementZombieKillCount();
 
+    }
+  }
+
+  private void SpawnCoin()
+  {
+    if (coinPrefab != null)
+    {
+      // Adjust the position to raise the coin along the Y-axis
+      Vector3 spawnPosition = transform.position;
+      spawnPosition.y += 1.0f; // Adjust Y-axis offset if needed
+
+      // Set a rotation of 90 degrees on the X-axis
+      Quaternion spawnRotation = Quaternion.Euler(90f, 0f, 0f);
+
+      // Instantiate the coin with the adjusted position and rotation
+      Instantiate(coinPrefab, spawnPosition, spawnRotation);
+    }
+    else
+    {
+      Debug.LogWarning("Coin prefab is not assigned!");
     }
   }
 }
