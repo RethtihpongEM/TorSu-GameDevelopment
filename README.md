@@ -1,6 +1,6 @@
-To run this project:
+# To run this project:
 
-Hierarchy Panel
+## Hierarchy Panel
 - Plane
     - Click on NavMesh and Bake
 
@@ -27,3 +27,10 @@ Hierarchy Panel
             - Click (+) to add 3 field for Spawn Points
             - Drag each SpawnPoint (Child of Spawner) into each field
             - Drag Sekeleton from Prefabs folder into Zombie Prefab field
+
+- BulletPoolManager
+    - Scripts:
+        - BulletPool.cs
+        - Drag SM_Bullet_05 into Bullet Prefab
+
+## Project
