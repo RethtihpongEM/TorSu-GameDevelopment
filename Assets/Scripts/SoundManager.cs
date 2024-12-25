@@ -29,7 +29,7 @@ public class SoundManager : MonoBehaviour
 
     private void PlayMenuSound(string sceneName)
     {
-        if (sceneName == "MainScene")
+        if (sceneName == "MainScene" || sceneName == "GameScene")
         {
             if (!menuAudioSource.isPlaying)
             {
