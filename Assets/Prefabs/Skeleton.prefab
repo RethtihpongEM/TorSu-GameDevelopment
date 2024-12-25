@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 1423854545998194674}
   - component: {fileID: 5536367436839527204}
   - component: {fileID: -2027908982724703826}
-  - component: {fileID: 8933702083138911009}
+  - component: {fileID: 7881733047770341725}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Zombie
@@ -836,7 +836,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8933702083138911009
+--- !u!114 &7881733047770341725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -845,12 +845,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2803820806472684270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4577ddee2860d410c9254bf5207ed989, type: 3}
+  m_Script: {fileID: 11500000, guid: ef5f3ed051189164aa5256890baaebd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
   attackDistance: 2
   healthBarPrefab: {fileID: 8862842828645049020, guid: 79b174f0930084c79b348b75a02bfdc7, type: 3}
+  maxHealth: 10
 --- !u!1 &2834232223631431927
 GameObject:
   m_ObjectHideFlags: 0
