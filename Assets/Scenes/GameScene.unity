@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 17063929}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7, y: 1.868636, z: 15.3}
+  m_LocalPosition: {x: -1.7, y: 1.868636, z: 12.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -166,17 +166,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 17063929}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7ddd64b25ba60b49a39ab0452cddd06, type: 3}
+  m_Script: {fileID: 11500000, guid: c2f1273b3a3924f188b56a4c94582c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
   - {fileID: 2031645019}
   - {fileID: 1507178402}
   - {fileID: 1757156786}
-  timeBetweenSpawnsType1: 3
-  timeBetweenSpawnsType2: 5
+  timeBetweenSpawnsType1: 5
+  timeBetweenSpawnsType2: 10
   zombiePrefabType1: {fileID: -1264764870192155570, guid: 2d9956195f3805549a6e448cc56bc63c, type: 3}
-  zombiePrefabType2: {fileID: 1984422595759444759, guid: 24ce55c7edfe669418dc37c5ba7832cc, type: 3}
+  zombiePrefabType2: {fileID: 1984422595759444759, guid: e261f70e45c1d4d2d9e801a4e9bb28c8, type: 3}
 --- !u!1 &167168486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,10 +1655,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1191292278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d128f53536ed17940bbf40b1382a87c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 244ff82d6e7d2416cbb514a290d8bfb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 2826328683393143484, guid: f4eda2fce49b5d14e9fbe9473981f725, type: 3}
+  _bulletPrefab: {fileID: 2826328683393143484, guid: 8c793898aac6741f0936676631c08749, type: 3}
   _poolSize: 20
 --- !u!114 &1209735733 stripped
 MonoBehaviour:
@@ -2033,7 +2033,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 82e94b32cc8aa4f49819de18f7ffbf3b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: cb1f51cfc8f5246908f15d0ccac8018c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1470495190
 GameObject:
@@ -2135,7 +2135,7 @@ Transform:
   m_GameObject: {fileID: 1507178401}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.8, y: 0, z: 2.2}
+  m_LocalPosition: {x: -11.68, y: 0, z: -5.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2182,7 +2182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536929006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3afb7419a174c04eb29ea0db9a13aaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 74fe1385619d24715b5b155694f74fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 180
@@ -2415,7 +2415,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1832146613}
   - component: {fileID: 1832146612}
-  - component: {fileID: 1832146611}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -2423,19 +2422,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1832146611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832146610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724024ef7ac87df4f811ecad388e9d12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuAudioSource: {fileID: 1832146612}
 --- !u!82 &1832146612
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3067,7 +3053,7 @@ MonoBehaviour:
   _fireRate: 0.1
   _ammoManager: {fileID: 1879449598989966084}
   _audioSource: {fileID: 1832146612}
-  _shootSound: {fileID: 8300000, guid: 61d6a01bca53e584f8b49b5555a92cb2, type: 3}
+  _shootSound: {fileID: 8300000, guid: 3e6469596aa854c6bbed72652ec1bae1, type: 3}
 --- !u!4 &401046551442467857
 Transform:
   m_ObjectHideFlags: 0
@@ -4780,11 +4766,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8622202516017572278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5171b952e0c55a24ca9578091ee1a4c5, type: 3}
+  m_Script: {fileID: 11500000, guid: d4fe2ee8b75be455eb74abe2aa55616f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxAmmo: 60
-  _reloadTime: 1
+  _reloadTime: 2
 --- !u!137 &1914544873622098039
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -8972,7 +8958,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8622202516017572278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ca45c92c546bef4b9d6754106a2cc61, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e51b8407cbd04f77bce92833e8d66f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
@@ -9956,7 +9942,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1476477723077100909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80c364f439c654f4a9e07fc9ca24ff9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e4b9036c9ec54e1baefe9a993703f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   handleRange: 1
@@ -9998,7 +9984,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1476477723261643459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80c364f439c654f4a9e07fc9ca24ff9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e4b9036c9ec54e1baefe9a993703f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   handleRange: 1

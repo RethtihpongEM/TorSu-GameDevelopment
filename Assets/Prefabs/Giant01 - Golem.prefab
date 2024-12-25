@@ -1552,7 +1552,7 @@ Animator:
   m_GameObject: {fileID: 6877092667274827786}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cfbfb95b5f2b90949be0b5faab2775fb, type: 3}
-  m_Controller: {fileID: 9100000, guid: e9362eb499e7f06498338944935f1be1, type: 2}
+  m_Controller: {fileID: 9100000, guid: e0f0f77df18354ca39dc9c6eb61e5f5e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1644,13 +1644,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6877092667274827786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5f3ed051189164aa5256890baaebd7, type: 3}
+  m_Script: {fileID: 11500000, guid: ca8240d654c2a48dc99aed714ac8e887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 9
+  damage: 10
   attackDistance: 2
-  healthBarPrefab: {fileID: 8862842828645049020, guid: 79b174f0930084c79b348b75a02bfdc7, type: 3}
-  coinPrefab: {fileID: 4422139152282305364, guid: 8db985c8f3c4e4349b6569d07e88485c, type: 3}
+  healthBarPrefab: {fileID: 8862842828645049020, guid: c93bef3f27a854290be68022c0a3b3ae, type: 3}
+  coinPrefab: {fileID: 4422139152282305364, guid: 60ba291d148c84bb69f8b49fdd13f05c, type: 3}
   maxHealth: 20
   health: 20
 --- !u!1 &7003656742059354000

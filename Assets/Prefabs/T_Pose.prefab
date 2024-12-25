@@ -2478,9 +2478,9 @@ GameObject:
   - component: {fileID: 8190191573104818625}
   - component: {fileID: 8485544357060939798}
   - component: {fileID: 5934993412028284907}
-  - component: {fileID: 6103911774387255627}
   - component: {fileID: 315285079075339419}
   - component: {fileID: 1879449598823968795}
+  - component: {fileID: 1915119933518771030}
   m_Layer: 0
   m_Name: T_Pose
   m_TagString: Player
@@ -2577,20 +2577,6 @@ CapsuleCollider:
   m_Height: 1.6718935
   m_Direction: 1
   m_Center: {x: 0, y: 0.77905256, z: 0}
---- !u!114 &6103911774387255627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8622202516251067049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ca45c92c546bef4b9d6754106a2cc61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
 --- !u!114 &315285079075339419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2607,7 +2593,6 @@ MonoBehaviour:
   _leftJoystick: {fileID: 0}
   _rightJoystick: {fileID: 0}
   _animator: {fileID: 8190191573104818625}
-  _bulletPrefab: {fileID: 0}
   _shootPoint: {fileID: 0}
   _moveSpeed: 6
   _rotationSpeed: 9
@@ -2625,11 +2610,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8622202516251067049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5171b952e0c55a24ca9578091ee1a4c5, type: 3}
+  m_Script: {fileID: 11500000, guid: d4fe2ee8b75be455eb74abe2aa55616f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxAmmo: 30
   _reloadTime: 2
+--- !u!114 &1915119933518771030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8622202516251067049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e51b8407cbd04f77bce92833e8d66f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  _animator: {fileID: 0}
 --- !u!1 &8660216280009562129
 GameObject:
   m_ObjectHideFlags: 0
