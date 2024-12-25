@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
+  [SerializeField] private Animator _animator;
   private NavMeshAgent agent;
 
   public int maxHealth = 100;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
 
   private void Die()
   {
+    _animator.SetBool("IsDeath", true);
     Debug.Log("Player has died!");
   }
 
