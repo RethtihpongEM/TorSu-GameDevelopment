@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 
   public int maxHealth = 100;
   public int currentHealth;
+  [SerializeField] private Animator _animator;
 
   void Start()
   {
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
 
   private void Die()
   {
+    _animator.SetBool("IsDeath", true);
     GameManager.Instance.EndGameWhenPlayerDie();
   }
 }

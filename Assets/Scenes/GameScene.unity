@@ -1614,6 +1614,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089218884}
   m_CullTransparentMesh: 0
+--- !u!1 &1191292278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191292280}
+  - component: {fileID: 1191292281}
+  m_Layer: 0
+  m_Name: BulletPoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1191292280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191292278}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.7665963, z: -9.975534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1191292281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191292278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d128f53536ed17940bbf40b1382a87c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 2826328683393143484, guid: f4eda2fce49b5d14e9fbe9473981f725, type: 3}
+  _poolSize: 20
 --- !u!114 &1209735733 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3027662914082452635, guid: 2cdd45d8e7e6845a4959e557bad8e970, type: 3}
@@ -3014,7 +3060,6 @@ MonoBehaviour:
   _leftJoystick: {fileID: 8573671274702998732}
   _rightJoystick: {fileID: 8573671274786906982}
   _animator: {fileID: 8190191572804195038}
-  _bulletPrefab: {fileID: 2826328683393143484, guid: f4eda2fce49b5d14e9fbe9473981f725, type: 3}
   _shootPoint: {fileID: 5303285179377238384}
   _moveSpeed: 6
   _rotationSpeed: 7
@@ -4738,8 +4783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5171b952e0c55a24ca9578091ee1a4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 30
-  _reloadTime: 2
+  _maxAmmo: 60
+  _reloadTime: 1
 --- !u!137 &1914544873622098039
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -8932,6 +8977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  _animator: {fileID: 8190191572804195038}
 --- !u!4 &6132839460934439421
 Transform:
   m_ObjectHideFlags: 0
@@ -10309,3 +10355,4 @@ SceneRoots:
   - {fileID: 9021478547048398727}
   - {fileID: 1832146613}
   - {fileID: 3201316790573417824}
+  - {fileID: 1191292280}

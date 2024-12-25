@@ -2,26 +2,40 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private PlayerController _playerController;
+
+    private void Start()
+    {
+        // Find the PlayerController in the scene
+        _playerController = FindObjectOfType<PlayerController>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the collider belongs to a Zombie
         if (other.CompareTag("Zombie"))
         {
-            // Get the Zombie component
             Zombie zombie = other.GetComponent<Zombie>();
-
 
             if (zombie != null)
             {
-                // Log the hit with a unique ID or name of the zombie
                 Debug.Log($"Bullet hit zombie with ID: {zombie.ID}");
-
-                // Optionally, call a method on the zombie to handle damage
-                zombie.TakeDamage(1);  // Example: passing a damage value of 1
-
-                // Destroy the bullet after it hits a zombie
-                Destroy(gameObject);  // This destroys the bullet object
+                zombie.TakeDamage(3);
             }
+
+            // Return the bullet to the pool
+            if (_playerController != null)
+            {
+                _playerController.ReturnBulletToPool(gameObject);
+            }
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        // Return the bullet to the pool when it goes off-screen
+        if (_playerController != null)
+        {
+            _playerController.ReturnBulletToPool(gameObject);
         }
     }
 }

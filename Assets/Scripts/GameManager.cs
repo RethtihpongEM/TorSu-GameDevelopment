@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI; // Import TextMeshPro namespace
+using UnityEngine.UI;
+using System.Collections; // Import TextMeshPro namespace
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // Singleton instance
-    public float timeRemaining = 10f; // Default 3 minutes
+    public float timeRemaining = 180f; // Default 3 minutes
     public TextMeshProUGUI timerText; // Reference to TextMeshProUGUI
     public TextMeshProUGUI zombieKillText;
     public TextMeshProUGUI ammoCounterText;
@@ -107,14 +108,49 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score; // Update TextMeshPro text
     }
 
+    // void EndGame(bool isWinning)
+    // {
+    //     isGameOver = true;
+
+    //     // Stop all game activity
+    //     Time.timeScale = 0; // Freeze the game
+
+    //     // Display win or lose message
+    //     if (isWinning)
+    //     {
+    //         Debug.Log("Player Wins!");
+    //         Debug.Log("Kills: " + zombieKillCount);
+    //         Debug.Log("Score: " + score);
+    //         Debug.Log("Time Remaining: " + timeRemaining);
+    //         Debug.Log("Coin Collected: " + coinCollected);
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("Player Loses!");
+    //         Debug.Log("Kills: " + zombieKillCount);
+    //         Debug.Log("Score: " + score);
+    //         Debug.Log("Time Remaining: " + timeRemaining);
+    //         Debug.Log("Coin Collected: " + coinCollected);
+    //     }
+
+    //     // Show a game-over UI panel (optional)
+    //     // if (gameOverPanel != null)
+    //     // {
+    //     //     gameOverPanel.SetActive(true);
+    //     // }
+    // }
+
     void EndGame(bool isWinning)
     {
         isGameOver = true;
 
-        // Stop all game activity
-        Time.timeScale = 0; // Freeze the game
+        // Start a coroutine to handle the delay before freezing the game
+        StartCoroutine(EndGameCoroutine(isWinning));
+    }
 
-        // Display win or lose message
+    private IEnumerator EndGameCoroutine(bool isWinning)
+    {
+        // Display win or lose message immediately
         if (isWinning)
         {
             Debug.Log("Player Wins!");
@@ -131,6 +167,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("Time Remaining: " + timeRemaining);
             Debug.Log("Coin Collected: " + coinCollected);
         }
+
+        // Wait for 2 seconds
+        yield return new WaitForSecondsRealtime(1f);
+
+        // Freeze the game
+        Time.timeScale = 0;
 
         // Show a game-over UI panel (optional)
         // if (gameOverPanel != null)

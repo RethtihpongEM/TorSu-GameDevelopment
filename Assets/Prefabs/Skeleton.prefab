@@ -717,8 +717,8 @@ GameObject:
   - component: {fileID: 8881890470304338478}
   - component: {fileID: 6107609655785083342}
   - component: {fileID: 1054450838800463867}
-  - component: {fileID: -1264764870192155570}
   - component: {fileID: -3028174820782659739}
+  - component: {fileID: -1264764870192155570}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Zombie
@@ -814,21 +814,6 @@ CapsuleCollider:
   m_Height: 1.9707243
   m_Direction: 1
   m_Center: {x: -0, y: 0.9495777, z: -0}
---- !u!114 &-1264764870192155570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2803820806472684270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5f3ed051189164aa5256890baaebd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 25
-  attackDistance: 2
-  coinPrefab: {fileID: 4422139152282305364, guid: 8db985c8f3c4e4349b6569d07e88485c, type: 3}
 --- !u!195 &-3028174820782659739
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -851,6 +836,24 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-1264764870192155570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803820806472684270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5f3ed051189164aa5256890baaebd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  attackDistance: 2
+  healthBarPrefab: {fileID: 8862842828645049020, guid: 79b174f0930084c79b348b75a02bfdc7, type: 3}
+  coinPrefab: {fileID: 4422139152282305364, guid: 8db985c8f3c4e4349b6569d07e88485c, type: 3}
+  maxHealth: 10
+  health: 10
 --- !u!1 &2834232223631431927
 GameObject:
   m_ObjectHideFlags: 0
