@@ -1,6 +1,6 @@
 # To run this project:
 
-## Hierarchy Panel
+## Hierarchy
 - Plane
     - Click on NavMesh and Bake
 
@@ -34,3 +34,8 @@
         - Drag SM_Bullet_05 into Bullet Prefab
 
 ## Project
+- Prefabs
+    - HealthBar
+        - Scripts:
+            - HealthBar.cs
+                - Choose Foreground for Healthbar Sprite
