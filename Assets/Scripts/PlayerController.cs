@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FixedJoystick _leftJoystick;
     [SerializeField] private FixedJoystick _rightJoystick;
     [SerializeField] private Animator _animator;
-    [SerializeField] private GameObject _bulletPrefab; // Reference to your bullet prefab
     [SerializeField] private Transform _shootPoint; // Position where bullets spawn
     [SerializeField] private float _moveSpeed = 6f;
     [SerializeField] private float _rotationSpeed = 9f;
@@ -19,8 +18,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource _audioSource; // Reference to the AudioSource
     [SerializeField] private AudioClip _shootSound;    // Shooting sound effect
 
-
     private float _nextFireTime;
+
+    private BulletPool _bulletPool;
+
+    private void Awake()
+    {
+        // Find the BulletPool in the scene
+        _bulletPool = FindObjectOfType<BulletPool>();
+        if (_bulletPool == null)
+        {
+            Debug.LogError("BulletPool not found in the scene.");
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -42,9 +52,8 @@ public class PlayerController : MonoBehaviour
             // Shooting logic only when not reloading
             if (!_ammoManager.IsReloading && Time.time >= _nextFireTime && _ammoManager.TryShoot())
             {
-
                 GameManager.Instance.UpdateAmmoUI(_ammoManager.CurrentAmmo, _ammoManager.MaxAmmo);
-                Shoot(direction);  // Shoot in the direction of the joystick input
+                Shoot(direction); // Shoot in the direction of the joystick input
                 _nextFireTime = Time.time + _fireRate;
             }
         }
@@ -82,23 +91,31 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot(Vector3 direction)
     {
-        // Play shooting sound each function called
-        if (_audioSource != null && _shootSound != null)
+        if (_bulletPool == null) return;
+
+        // Get a bullet from the pool
+        GameObject bullet = _bulletPool.GetBullet();
+        if (bullet != null)
         {
-            _audioSource.PlayOneShot(_shootSound);
+            // Play shooting sound only when a bullet is available
+            if (_audioSource != null && _shootSound != null)
+            {
+                _audioSource.PlayOneShot(_shootSound);
+            }
+
+            // Position and rotate the bullet
+            bullet.transform.position = _shootPoint.position;
+            bullet.transform.rotation = Quaternion.LookRotation(direction);
+
+            // Add velocity to the bullet
+            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+            bulletRigidbody.velocity = direction * _bulletSpeed;
         }
+    }
 
-        // Instantiate bullet at the shoot point
-        GameObject bullet = Instantiate(_bulletPrefab, _shootPoint.position, _bulletPrefab.transform.rotation);
-        bullet.transform.rotation = Quaternion.LookRotation(_shootPoint.forward);
-
-
-        // Add force to the bullet in the given direction
-        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-        bulletRigidbody.velocity = direction * _bulletSpeed;
-
-        // Optionally, destroy the bullet after a certain time
-        Destroy(bullet, 5f);
+    public void ReturnBulletToPool(GameObject bullet)
+    {
+        if (_bulletPool == null) return;
+        _bulletPool.ReturnBullet(bullet);
     }
 }
-

@@ -7,25 +7,42 @@ public class Zombie : MonoBehaviour
   private NavMeshAgent agent;
   private Transform player;
   private Animator animator;
+
   [SerializeField] int damage = 25;
   [SerializeField] float attackDistance = 2f;
+  [SerializeField] private GameObject healthBarPrefab; // Reference to the health bar prefab
 
   private IObjectPool<Zombie> zombiePool;
+  private HealthBar healthBar; // Reference to the health bar script
+
+  public int maxHealth = 10;
+  private int _currentHealth;
+  private int hitCount = 0; // Track how many times the zombie has been hit
+
   public int ID { get; private set; }
   private static int nextID = 1;
-
-  private int health = 10;
-  private int hitCount = 0;  // Track how many times the zombie has been hit
 
   public void SetPool(IObjectPool<Zombie> pool)
   {
     zombiePool = pool;
   }
 
+  private void Awake()
+  {
+    // Assign a unique ID to each zombie
+    ID = nextID;
+    nextID++;
+  }
+
   void Start()
   {
     agent = GetComponent<NavMeshAgent>();
     animator = GetComponent<Animator>();
+
+    // Initialize current health
+    _currentHealth = maxHealth;
+
+    // Find the player by tag
     GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
     if (playerObject != null)
     {
@@ -35,32 +52,54 @@ public class Zombie : MonoBehaviour
     {
       Debug.LogError("Player not found! Make sure the player has the 'Player' tag.");
     }
+
+    // Instantiate health bar
+    Vector3 healthBarPosition = transform.position + Vector3.up * 2; // Position above the zombie
+    GameObject healthBarObject = Instantiate(healthBarPrefab, healthBarPosition, Quaternion.identity, transform);
+
+    healthBar = healthBarObject.GetComponent<HealthBar>();
+    if (healthBar == null)
+    {
+      Debug.LogError("Healthbar script not found on the instantiated prefab! Make sure the prefab has the Healthbar script attached.");
+    }
+
+    // Set the initial health in the health bar
+    healthBar?.UpdateHealthBar(maxHealth, _currentHealth);
   }
 
   void Update()
   {
-    agent.SetDestination(player.position);
-    float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-    if (distanceToPlayer <= attackDistance)
+    // Update zombie movement
+    if (player != null)
     {
-      // Stop moving and play attack animation
-      agent.isStopped = true;
-      animator.SetBool("IsAttacking", true);
-    }
-    else
-    {
-      // Move towards the player and play walking animation
-      agent.isStopped = false;
       agent.SetDestination(player.position);
+      float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-      animator.SetBool("IsAttacking", false);
-      animator.SetBool("IsWalking", true);
+      if (distanceToPlayer <= attackDistance)
+      {
+        // Stop moving and play attack animation
+        agent.isStopped = true;
+        animator.SetBool("IsAttacking", true);
+      }
+      else
+      {
+        // Move towards the player and play walking animation
+        agent.isStopped = false;
+        animator.SetBool("IsAttacking", false);
+        animator.SetBool("IsWalking", true);
+      }
     }
 
+    // Keep the health bar facing the camera
+    if (healthBar != null)
+    {
+      Vector3 directionToCamera = Camera.main.transform.position - healthBar.transform.position;
+      directionToCamera.y = 0; // Prevent rotation on the Y-axis
+      healthBar.transform.rotation = Quaternion.LookRotation(directionToCamera);
+    }
   }
 
-  public void DealDamage() //  Called by the animation event
+  public void DealDamage() // Called by the animation event
   {
     if (player != null)
     {
@@ -81,29 +120,24 @@ public class Zombie : MonoBehaviour
     }
   }
 
-  private void Awake()
-  {
-    // Assign a unique ID to each zombie
-    ID = nextID;
-    nextID++;
-  }
-
   public void TakeDamage(int damage)
   {
-    // Decrease health by the damage value
-    health -= damage;
-    hitCount++;  // Increment the hit counter
+    _currentHealth -= damage;
+    hitCount++;
 
-    // Log the damage and the total number of hits
-    Debug.Log($"Zombie ID: {ID} took {damage} damage. Remaining health: {health}. Total hits: {hitCount}");
+    // Update health bar
+    if (healthBar != null)
+    {
+      healthBar.UpdateHealthBar(maxHealth, _currentHealth);
+    }
 
-    // Check if the zombie is dead (health <= 0)
-    if (health <= 0)
+    Debug.Log($"Zombie took {damage} damage. Current health: {_currentHealth}. Total hits: {hitCount}");
+
+    if (_currentHealth <= 0)
     {
       // Destroy the zombie game object
       Destroy(gameObject);
       GameManager.Instance.IncrementZombieKillCount();
-
     }
   }
 }
