@@ -4,17 +4,21 @@ using UnityEngine.Pool;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private float timeBetweenSpawns = 5f; // General spawn interval
-    [SerializeField] private float timeForSpecialZombie = 10f; // Interval for 4th prefab zombie
-    private float timeSinceLastSpawn;
-    private float timeSinceLastSpecialSpawn;
+    [SerializeField] private float timeBetweenSpawnsType1 = 5f; // Spawn interval for zombie type 1
+    [SerializeField] private float timeBetweenSpawnsType2 = 10f; // Spawn interval for zombie type 2
+    private float timeSinceLastSpawnType1;
+    private float timeSinceLastSpawnType2;
 
-    [SerializeField] private Zombie[] zombiePrefabs; // Array of zombie prefabs
-    private IObjectPool<Zombie> zombiePool;
+    [SerializeField] private Zombie zombiePrefabType1; // Prefab for zombie type 1
+    [SerializeField] private Zombie zombiePrefabType2; // Prefab for zombie type 2
+
+    private IObjectPool<Zombie> zombiePoolType1;
+    private IObjectPool<Zombie> zombiePoolType2;
 
     void Awake()
     {
-        zombiePool = new ObjectPool<Zombie>(CreateZombie, OnGet, OnRelease);
+        zombiePoolType1 = new ObjectPool<Zombie>(() => CreateZombie(zombiePrefabType1), OnGet, OnRelease);
+        zombiePoolType2 = new ObjectPool<Zombie>(() => CreateZombie(zombiePrefabType2), OnGet, OnRelease);
     }
 
     private void OnGet(Zombie zombie)
@@ -29,45 +33,27 @@ public class Spawner : MonoBehaviour
         zombie.gameObject.SetActive(false);
     }
 
-    private Zombie CreateZombie()
+    private Zombie CreateZombie(Zombie prefab)
     {
-        // Randomly select a zombie prefab from the array for normal spawns
-        Zombie selectedPrefab = zombiePrefabs[Random.Range(0, zombiePrefabs.Length - 1)];
-        Zombie zombie = Instantiate(selectedPrefab);
-        zombie.SetPool(zombiePool);
+        Zombie zombie = Instantiate(prefab);
+        zombie.SetPool(zombiePoolType1); // Set the pool
         return zombie;
-    }
-
-    private Zombie CreateSpecialZombie()
-    {
-        // Select the 4th prefab explicitly
-        Zombie specialZombiePrefab = zombiePrefabs[^1];
-        Zombie zombie = Instantiate(specialZombiePrefab);
-        zombie.SetPool(zombiePool);
-        return zombie;
-    }
-
-    void Start()
-    {
-        timeSinceLastSpawn = Time.time;
-        timeSinceLastSpecialSpawn = Time.time;
     }
 
     void Update()
     {
-        // Spawn regular zombies at the default interval
-        if (Time.time > timeSinceLastSpawn)
+        // Spawn zombie type 1
+        if (Time.time >= timeSinceLastSpawnType1)
         {
-            zombiePool.Get();
-            timeSinceLastSpawn = Time.time + timeBetweenSpawns;
+            zombiePoolType1.Get();
+            timeSinceLastSpawnType1 = Time.time + timeBetweenSpawnsType1;
         }
 
-        // Spawn the 4th prefab zombie at its specific interval
-        if (Time.time > timeSinceLastSpecialSpawn)
+        // Spawn zombie type 2
+        if (Time.time >= timeSinceLastSpawnType2)
         {
-            Zombie specialZombie = CreateSpecialZombie();
-            OnGet(specialZombie);
-            timeSinceLastSpecialSpawn = Time.time + timeForSpecialZombie;
+            zombiePoolType2.Get();
+            timeSinceLastSpawnType2 = Time.time + timeBetweenSpawnsType2;
         }
     }
 }
