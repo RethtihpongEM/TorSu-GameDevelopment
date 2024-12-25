@@ -13,7 +13,7 @@ public class Zombie : MonoBehaviour
   [SerializeField] private GameObject healthBarPrefab; // Reference to the health bar prefab
 
   private IObjectPool<Zombie> zombiePool;
-  private Healthbar healthBar; // Reference to the health bar script
+  private HealthBar healthBar; // Reference to the health bar script
 
   public int maxHealth = 10;
   private int _currentHealth;
@@ -57,7 +57,7 @@ public class Zombie : MonoBehaviour
     Vector3 healthBarPosition = transform.position + Vector3.up * 2; // Position above the zombie
     GameObject healthBarObject = Instantiate(healthBarPrefab, healthBarPosition, Quaternion.identity, transform);
 
-    healthBar = healthBarObject.GetComponent<Healthbar>();
+    healthBar = healthBarObject.GetComponent<HealthBar>();
     if (healthBar == null)
     {
       Debug.LogError("Healthbar script not found on the instantiated prefab! Make sure the prefab has the Healthbar script attached.");

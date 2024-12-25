@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 5513725027754209501}
   - component: {fileID: 547473488343410770}
   - component: {fileID: 4987722577702981025}
-  - component: {fileID: 7854405163022734482}
+  - component: {fileID: 1097508496827288840}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7854405163022734482
+--- !u!114 &1097508496827288840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
