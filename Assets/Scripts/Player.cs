@@ -30,8 +30,6 @@ public class Player : MonoBehaviour
   {
     currentHealth -= damage;
     NotifyHealthChange();
-    Debug.Log("Player's health: ");
-    Debug.Log(currentHealth);
     if (currentHealth <= 0)
     {
       Die();

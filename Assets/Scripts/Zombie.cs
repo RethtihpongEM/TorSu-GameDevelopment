@@ -72,7 +72,7 @@ public class Zombie : MonoBehaviour
   }
 
   void Update()
-  { 
+  {
     // Update zombie movement
     if (player != null)
     {
@@ -126,8 +126,6 @@ public class Zombie : MonoBehaviour
     {
       healthBar.UpdateHealthBar(maxHealth, _currentHealth);
     }
-
-    Debug.Log($"Zombie took {damage} damage. Current health: {_currentHealth}. Total hits: {hitCount}");
 
     if (_currentHealth <= 0)
     {

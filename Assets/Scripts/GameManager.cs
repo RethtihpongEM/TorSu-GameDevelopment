@@ -1,7 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections; // Import TextMeshPro namespace
+using System.Collections;
+using UnityEngine.SceneManagement; // Import TextMeshPro namespace
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ammoCounterText;
     public Slider healthSlider;
     public TextMeshProUGUI scoreText; // Updated for score display as well
+
 
 
     private int zombieKillCount = 0; // Tracks zombie kills
