@@ -9,26 +9,16 @@ public class GameManager : MonoBehaviour
 {
     public GameObject timeUpPanel;  // Assign your WinPanel in the Inspector
     public GameObject losePanel; // Assign your LosePanel in the Inspector
-
     public static GameManager Instance; // Singleton instance
-
     public float timeRemaining = 180f; // Default 3 minutes
     public TextMeshProUGUI timerText; // Reference to TextMeshProUGUI
     public TextMeshProUGUI zombieKillText;
     public TextMeshProUGUI ammoCounterText;
-
     public TextMeshProUGUI coinCollectedText; // UI for coin collected during gameplay
     public Slider healthSlider;
-    public TextMeshProUGUI resultScoreText;
-    public TextMeshProUGUI resultCoinText;  // UI for coin collected during gameplay
-    public TextMeshProUGUI restultKillText; // UI for zombie kill count during gameplay
-
-    public TextMeshProUGUI timeUpScoreText;
-    public TextMeshProUGUI timeUpKillText;
-    public TextMeshProUGUI timeUpCoinText;
-    private int zombieKillCount = 0; // Tracks zombie kills
-    private int score = 0;
-    private int coinCollected = 0;
+    public TextMeshProUGUI resultScoreText, resultCoinText, restultKillText;
+    public TextMeshProUGUI timeUpScoreText, timeUpKillText, timeUpCoinText;
+    private int zombieKillCount = 0, score = 0, coinCollected = 0;
     private bool isGameOver = false;
     private string filePath;
 
@@ -222,7 +212,6 @@ public class GameManager : MonoBehaviour
             Debug.LogError($"Error saving leaderboard data: {e.Message}");
         }
     }
-
 
     void UpdateKillUI()
     {
