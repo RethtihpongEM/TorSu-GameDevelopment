@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     if (currentHealth <= 0)
     {
       Die();
-    } 
+    }
   }
 
   private void Die()
@@ -42,10 +42,4 @@ public class Player : MonoBehaviour
     _animator.SetBool("IsDeath", true);
     GameManager.Instance.TriggerLose();
   }
-
-  // private void Alive()
-  // {
-  //   _animator.SetBool("IsDeath", false);
-  //   GameManager.Instance.TriggerTimeUp();
-  // }
 }
