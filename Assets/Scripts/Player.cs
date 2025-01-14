@@ -1,13 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
-  [SerializeField] private Animator _animator;
   private NavMeshAgent agent;
 
   public int maxHealth = 100;
   public int currentHealth;
+  [SerializeField] private Animator _animator;
 
   void Start()
   {
@@ -30,19 +31,21 @@ public class Player : MonoBehaviour
   {
     currentHealth -= damage;
     NotifyHealthChange();
-    Debug.Log("Player's health: ");
-    Debug.Log(currentHealth);
     if (currentHealth <= 0)
     {
       Die();
-    }
+    } 
   }
 
   private void Die()
   {
     _animator.SetBool("IsDeath", true);
-    Debug.Log("Player has died!");
+    GameManager.Instance.TriggerLose();
   }
 
-
+  // private void Alive()
+  // {
+  //   _animator.SetBool("IsDeath", false);
+  //   GameManager.Instance.TriggerTimeUp();
+  // }
 }

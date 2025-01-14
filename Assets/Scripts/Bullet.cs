@@ -18,8 +18,7 @@ public class Bullet : MonoBehaviour
 
             if (zombie != null)
             {
-                Debug.Log($"Bullet hit zombie with ID: {zombie.ID}");
-                zombie.TakeDamage(1);
+                zombie.TakeDamage(3);
             }
 
             // Return the bullet to the pool

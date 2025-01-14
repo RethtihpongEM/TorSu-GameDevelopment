@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 5513725027754209501}
   - component: {fileID: 547473488343410770}
   - component: {fileID: 4987722577702981025}
-  - component: {fileID: 1195032328760416222}
+  - component: {fileID: 1097508496827288840}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1195032328760416222
+--- !u!114 &1097508496827288840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8862842828645049020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53eccfcbd53eb284cb18d981186423cf, type: 3}
+  m_Script: {fileID: 11500000, guid: eab5016f08b224cce96e3adf9d0380f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _healthbarSprite: {fileID: 1186563484686233885}

@@ -715,10 +715,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3288468337185982548}
   - component: {fileID: 8881890470304338478}
-  - component: {fileID: 1423854545998194674}
-  - component: {fileID: 5536367436839527204}
-  - component: {fileID: -2027908982724703826}
-  - component: {fileID: 7881733047770341725}
+  - component: {fileID: 6107609655785083342}
+  - component: {fileID: 1054450838800463867}
+  - component: {fileID: -3028174820782659739}
+  - component: {fileID: -1264764870192155570}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Zombie
@@ -734,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2803820806472684270}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -742,7 +742,7 @@ Transform:
   - {fileID: 8020212946955959257}
   - {fileID: 1311441859923691135}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8881890470304338478
 Animator:
   serializedVersion: 5
@@ -764,7 +764,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &1423854545998194674
+--- !u!54 &6107609655785083342
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -788,10 +788,10 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &5536367436839527204
+--- !u!136 &1054450838800463867
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -811,10 +811,10 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1.9909353
+  m_Height: 1.9707243
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9321097, z: 0}
---- !u!195 &-2027908982724703826
+  m_Center: {x: -0, y: 0.9495777, z: -0}
+--- !u!195 &-3028174820782659739
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -836,7 +836,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7881733047770341725
+--- !u!114 &-1264764870192155570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -845,13 +845,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2803820806472684270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5f3ed051189164aa5256890baaebd7, type: 3}
+  m_Script: {fileID: 11500000, guid: ca8240d654c2a48dc99aed714ac8e887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 6
   attackDistance: 2
-  healthBarPrefab: {fileID: 8862842828645049020, guid: 79b174f0930084c79b348b75a02bfdc7, type: 3}
+  healthBarPrefab: {fileID: 8862842828645049020, guid: c93bef3f27a854290be68022c0a3b3ae, type: 3}
+  coinPrefab: {fileID: 4422139152282305364, guid: 60ba291d148c84bb69f8b49fdd13f05c, type: 3}
   maxHealth: 10
+  health: 10
 --- !u!1 &2834232223631431927
 GameObject:
   m_ObjectHideFlags: 0

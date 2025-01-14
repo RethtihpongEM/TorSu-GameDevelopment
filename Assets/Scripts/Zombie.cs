@@ -8,9 +8,11 @@ public class Zombie : MonoBehaviour
   private Transform player;
   private Animator animator;
 
-  [SerializeField] int damage = 25;
+  [SerializeField] int damage = 5;
   [SerializeField] float attackDistance = 2f;
   [SerializeField] private GameObject healthBarPrefab; // Reference to the health bar prefab
+
+  [SerializeField] private GameObject coinPrefab;
 
   private IObjectPool<Zombie> zombiePool;
   private HealthBar healthBar; // Reference to the health bar script
@@ -21,6 +23,8 @@ public class Zombie : MonoBehaviour
 
   public int ID { get; private set; }
   private static int nextID = 1;
+
+  // [SerializeField] int health = 10;
 
   public void SetPool(IObjectPool<Zombie> pool)
   {
@@ -112,14 +116,6 @@ public class Zombie : MonoBehaviour
     }
   }
 
-  private void OnTriggerEnter(Collider other)
-  {
-    if (other.CompareTag("Player"))
-    {
-      Debug.Log("Zombie reached the player!");
-    }
-  }
-
   public void TakeDamage(int damage)
   {
     _currentHealth -= damage;
@@ -131,13 +127,33 @@ public class Zombie : MonoBehaviour
       healthBar.UpdateHealthBar(maxHealth, _currentHealth);
     }
 
-    Debug.Log($"Zombie took {damage} damage. Current health: {_currentHealth}. Total hits: {hitCount}");
-
     if (_currentHealth <= 0)
     {
       // Destroy the zombie game object
       Destroy(gameObject);
+      SpawnCoin();
       GameManager.Instance.IncrementZombieKillCount();
+
+    }
+  }
+
+  private void SpawnCoin()
+  {
+    if (coinPrefab != null)
+    {
+      // Adjust the position to raise the coin along the Y-axis
+      Vector3 spawnPosition = transform.position;
+      spawnPosition.y += 1.0f; // Adjust Y-axis offset if needed
+
+      // Set a rotation of 90 degrees on the X-axis
+      Quaternion spawnRotation = Quaternion.Euler(90f, 0f, 0f);
+
+      // Instantiate the coin with the adjusted position and rotation
+      Instantiate(coinPrefab, spawnPosition, spawnRotation);
+    }
+    else
+    {
+      Debug.LogWarning("Coin prefab is not assigned!");
     }
   }
 }
