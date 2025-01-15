@@ -1,6 +1,9 @@
 # To run this project:
+- Run from MainScene
 
-## Hierarchy
+# Simply ignore below instructions if the project is not showing any errors
+
+## GameScene Hierarchy
 - Plane
     - Click on NavMesh and Bake
 

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -39,6 +40,6 @@ public class Player : MonoBehaviour
   private void Die()
   {
     _animator.SetBool("IsDeath", true);
-    GameManager.Instance.EndGameWhenPlayerDie();
+    GameManager.Instance.TriggerLose();
   }
 }

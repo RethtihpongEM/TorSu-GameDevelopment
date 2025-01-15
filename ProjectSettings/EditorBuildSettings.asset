@@ -7,13 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
-    guid: eac1f168649834e2cb5713e988898e07
+    guid: e796b72c63cbe485f8df3bece36ea5c6
   - enabled: 1
     path: Assets/Scenes/GameModeScene.unity
-    guid: a88b4e1d5ac9e4445a6f3a9f658036c2
+    guid: 389a97644a51140cfa0f1818d11d9f2c
   - enabled: 1
     path: Assets/Scenes/MapSelectionScene.unity
-    guid: 5c8de5044e0ba460685bce19a730471b
+    guid: 99f698836c19149e290b2b448b1283ee
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: ec7e770de035e4d53b8fa2fed19d2cde
