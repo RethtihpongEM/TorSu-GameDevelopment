@@ -7,13 +7,10 @@ public class Zombie : MonoBehaviour
   private NavMeshAgent agent;
   private Transform player;
   private Animator animator;
-
   [SerializeField] int damage = 5;
   [SerializeField] float attackDistance = 2f;
   [SerializeField] private GameObject healthBarPrefab; // Reference to the health bar prefab
-
   [SerializeField] private GameObject coinPrefab;
-
   private IObjectPool<Zombie> zombiePool;
   private HealthBar healthBar; // Reference to the health bar script
 
@@ -154,6 +151,7 @@ public class Zombie : MonoBehaviour
     else
     {
       Debug.LogWarning("Coin prefab is not assigned!");
+
     }
   }
 }

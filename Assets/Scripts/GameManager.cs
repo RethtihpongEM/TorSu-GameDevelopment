@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
     {
         zombieKillCount++;
         IncrementScore();
+        IncrementScore();
         UpdateZombieKillUI();
         UpdateKillUI();
     }
